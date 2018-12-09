@@ -1,0 +1,74 @@
+# SavageFactions Default Permissions Addon,
+# Made with <3
+
+
+default-perms:
+  recruit:
+    - door
+    - button
+    - lever
+    - items
+    - fly
+  normal:
+    - build
+    - destory
+    - door
+    - button
+    - lever
+    - items
+    - fly
+    - container
+    - warp
+    - chest
+    - home
+  mod:
+    - build
+    - destory
+    - door
+    - button
+    - lever
+    - items
+    - fly
+    - container
+    - warp
+    - chest
+    - territory
+    - sethome
+    - setwarp
+    - vault
+    - tntbank
+    - tntfill
+    - kick
+    - invite
+  coleader:
+    - build
+    - destory
+    - door
+    - button
+    - lever
+    - items
+    - fly
+    - container
+    - warp
+    - chest
+    - territory
+    - sethome
+    - setwarp
+    - vault
+    - tntbank
+    - tntfill
+    - kick
+    - invite
+    - ban
+    - promote
+    - withdraw
+    - access
+  truce:
+    - fly
+  ally:
+    - fly
+  enemy:
+    - door
+  neutral:
+    - fly
+
