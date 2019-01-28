@@ -2,7 +2,7 @@
 # Made with <3
 
 
-default-perms:
+default-perms-allow:
   recruit:
     - door
     - button
@@ -11,7 +11,7 @@ default-perms:
     - fly
   normal:
     - build
-    - destory
+    - destroy
     - door
     - button
     - lever
@@ -23,7 +23,7 @@ default-perms:
     - home
   mod:
     - build
-    - destory
+    - destroy
     - door
     - button
     - lever
@@ -42,7 +42,7 @@ default-perms:
     - invite
   coleader:
     - build
-    - destory
+    - destroy
     - door
     - button
     - lever
@@ -68,7 +68,170 @@ default-perms:
   ally:
     - fly
   enemy:
-    - door
   neutral:
+
+default-perms-deny:
+  recruit:
+    - build
+    - destroy
+    - frostwalk
+    - painbuild
+    - container
+    - invite
+    - kick
+    - sethome
+    - withdraw
+    - territory
+    - access
+    - promote
+    - setwarp
+    - warp
+    - ban
+    - disband
+    - spawner
+    - tntbank
+    - vault
+    - tntfill
+    - chest
+    - home
+  normal:
+    - frostwalk
+    - painbuild
+    - invite
+    - kick
+    - sethome
+    - withdraw
+    - territory
+    - access
+    - promote
+    - setwarp
+    - ban
+    - disband
+    - spawner
+    - tntbank
+    - vault
+    - tntfill
+  mod:
+    - frostwalk
+    - painbuild
+    - withdraw
+    - access
+    - promote
+    - ban
+    - disband
+    - spawner
+  coleader:
+    - disband
+    - spawner
+  truce:
+    - ban
+    - build
+    - destroy
+    - frostwalk
+    - painbuild
+    - door
+    - button
+    - lever
+    - container
+    - invite
+    - kick
+    - items
+    - sethome
+    - territory
+    - access
+    - home
+    - disband
+    - promote
+    - setwarp
+    - warp
+    - vault
+    - tntbank
+    - tntfill
+    - withdraw
+    - chest
+    - spawner
+  ally:
+    - ban
+    - build
+    - destroy
+    - frostwalk
+    - painbuild
+    - door
+    - button
+    - lever
+    - container
+    - invite
+    - kick
+    - items
+    - sethome
+    - territory
+    - access
+    - home
+    - disband
+    - promote
+    - setwarp
+    - warp
+    - vault
+    - tntbank
+    - tntfill
+    - withdraw
+    - chest
+    - spawner
+  enemy:
+    - ban
+    - build
+    - destroy
+    - frostwalk
+    - painbuild
+    - door
+    - button
+    - lever
+    - container
+    - invite
+    - kick
+    - items
+    - sethome
+    - territory
+    - access
+    - home
+    - disband
+    - promote
+    - setwarp
+    - warp
+    - vault
     - fly
+    - tntbank
+    - tntfill
+    - withdraw
+    - chest
+    - spawner
+  neutral:
+    - ban
+    - build
+    - destroy
+    - frostwalk
+    - painbuild
+    - door
+    - button
+    - lever
+    - container
+    - invite
+    - kick
+    - items
+    - sethome
+    - territory
+    - access
+    - home
+    - disband
+    - promote
+    - setwarp
+    - warp
+    - fly
+    - vault
+    - tntbank
+    - tntfill
+    - withdraw
+    - chest
+    - spawner
+
 

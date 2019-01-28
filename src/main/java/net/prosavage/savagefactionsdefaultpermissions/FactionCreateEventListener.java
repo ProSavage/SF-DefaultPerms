@@ -6,14 +6,13 @@ import com.massivecraft.factions.event.FactionCreateEvent;
 import com.massivecraft.factions.struct.Relation;
 import com.massivecraft.factions.struct.Role;
 import com.massivecraft.factions.zcore.fperms.Access;
-import com.massivecraft.factions.zcore.fperms.Permissable;
 import com.massivecraft.factions.zcore.fperms.PermissableAction;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class FactionCreateEventListener implements Listener {
@@ -27,22 +26,34 @@ public class FactionCreateEventListener implements Listener {
 
 
             Configuration configuration = plugin.getConfig();
-            ConfigurationSection defaultPerms = plugin.getConfig().getConfigurationSection("default-perms");
+            ConfigurationSection defaultPermsAllow = plugin.getConfig().getConfigurationSection("default-perms-allow");
+            ConfigurationSection defailtPermsDeny = plugin.getConfig().getConfigurationSection("default-perms-deny");
             Faction faction = Factions.getInstance().getByTag(event.getFactionTag());
-            for (String section : defaultPerms.getKeys(false)) {
-                List<String> permissions = defaultPerms.getStringList(section);
-                Role role = getRoleFromString(section);
-                Relation relation = Relation.fromString(section);
-                if (role == Role.LEADER) {
-                    for (String permission : permissions) {
-                        faction.setPermission(relation, PermissableAction.fromString(permission), Access.ALLOW);
+            for (String sectionAllow : defaultPermsAllow.getKeys(false)) {
+                for (String sectionDeny : defailtPermsDeny.getKeys(false)) {
+                    List<String> permissionsAllow = defaultPermsAllow.getStringList(sectionAllow);
+                    List<String> permissionsDeny = defailtPermsDeny.getStringList(sectionDeny);
+                    Role roleallow = getRoleFromString(sectionAllow);
+                    Role roledeny = getRoleFromString(sectionDeny);
+                    Relation relationAllow = Relation.fromString(sectionAllow);
+                    Relation relationDeny = Relation.fromString(sectionDeny);
+                    if (roleallow == Role.LEADER) {
+                        for (String permission : permissionsAllow) {
+                            faction.setPermission(relationAllow, PermissableAction.fromString(permission), Access.ALLOW);
+                        }
+                        for(String permission : permissionsDeny){
+                            faction.setPermission(relationDeny, PermissableAction.fromString(permission), Access.DENY);
+                        }
+                    } else {
+                        for (String permission : permissionsAllow) {
+                            faction.setPermission(roleallow, PermissableAction.fromString(permission), Access.ALLOW);
+                        }
+                        for (String permission : permissionsDeny) {
+                            faction.setPermission(roledeny, PermissableAction.fromString(permission), Access.DENY);
+                        }
                     }
-                } else {
-                    for (String permission : permissions) {
-                        faction.setPermission(role, PermissableAction.fromString(permission), Access.ALLOW);
-                    }
-                }
 
+                }
             }
 
         }, 20L);
@@ -66,7 +77,4 @@ public class FactionCreateEventListener implements Listener {
                 return Role.LEADER;
         }
     }
-
-
-
 }
